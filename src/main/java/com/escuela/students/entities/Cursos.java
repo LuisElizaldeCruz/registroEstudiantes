@@ -6,24 +6,21 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Academias {
+public class Cursos {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String nombre;
-    private String telefono;
-    private String web;
+    private String descripcion;
 
-    public Academias() {
+    public Cursos() {
     }
 
-    public Academias(Long id, String nombre, String telefono, String web) {
+    public Cursos(Long id, String nombre, String descripcion) {
         this.id = id;
         this.nombre = nombre;
-        this.telefono = telefono;
-        this.web = web;
+        this.descripcion = descripcion;
     }
 
     public Long getId() {
@@ -42,29 +39,20 @@ public class Academias {
         this.nombre = nombre;
     }
 
-    public String getWeb() {
-        return web;
+    public String getDescripcion() {
+        return descripcion;
     }
 
-    public void setWeb(String web) {
-        this.web = web;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
     }
 
     @Override
     public String toString() {
-        return "Academias{" +
+        return "Cursos{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", web='" + web + '\'' +
+                ", descripcion='" + descripcion + '\'' +
                 '}';
     }
 }
