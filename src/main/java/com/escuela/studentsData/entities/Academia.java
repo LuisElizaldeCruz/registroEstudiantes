@@ -1,12 +1,11 @@
-package com.escuela.students.entities;
+package com.escuela.studentsData.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
-public class Academias {
+public class Academia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +15,16 @@ public class Academias {
     private String telefono;
     private String web;
 
-    public Academias() {
+    @OneToMany(mappedBy = "academia")
+    private List<Profesor> profesor;
+
+    @OneToMany(mappedBy = "academia")
+    private List<Alumno> listaAlumnos;
+
+    public Academia() {
     }
 
-    public Academias(Long id, String nombre, String telefono, String web) {
+    public Academia(Long id, String nombre, String telefono, String web) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -56,6 +61,22 @@ public class Academias {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public List<Profesor> getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(List<Profesor> profesor) {
+        this.profesor = profesor;
+    }
+
+    public List<Alumno> getAlumno() {
+        return listaAlumnos;
+    }
+
+    public void setAlumnos(List<Alumno> ListaAlumnos) {
+        this.listaAlumnos = ListaAlumnos;
     }
 
     @Override

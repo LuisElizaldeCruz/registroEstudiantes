@@ -1,12 +1,9 @@
-package com.escuela.students.entities;
+package com.escuela.studentsData.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity 
-public class Profesores {
+public class Profesor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -16,10 +13,14 @@ public class Profesores {
     private String email;
     private String telefono;
 
-    public Profesores() {
+    @ManyToOne()
+    @JoinColumn(name = "id_academia")//id de la tabla academia
+    private Academia academia;
+
+    public Profesor() {
     }
 
-    public Profesores(Long id, String nombre, String apellidos, String email, String telefono) {
+    public Profesor(Long id, String nombre, String apellidos, String email, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;

@@ -1,29 +1,32 @@
-package com.escuela.students.entities;
+package com.escuela.studentsData.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
-public class Alumnos {
+public class Alumno {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private String apellidos;
     private String email;
     private String telefono;
 
-    public Alumnos() {
+    @ManyToOne()
+    @JoinColumn(name = "id_academia")//id de la tabla academia
+    private Academia academia;
+
+    public Alumno() {
     }
 
-    public Alumnos(Long id, String nombre, String apellidos, String email, String telefono) {
+    public Alumno(Long id, String nombre, String apellidos, String email, String telefono, Academia academia) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
+        this.academia = academia;
     }
 
     public Long getId() {
@@ -64,6 +67,14 @@ public class Alumnos {
 
     public void setTelefono(String telefono) {
         this.telefono = telefono;
+    }
+
+    public Academia getAcademias() {
+        return academia;
+    }
+
+    public void setAcademias(Academia academia) {
+        this.academia = academia;
     }
 
     @Override
