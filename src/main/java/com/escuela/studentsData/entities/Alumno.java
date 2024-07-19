@@ -79,12 +79,12 @@ public class Alumno {
 
     @Override
     public String toString() {
-        return "Alumnos{" +
+        return "Alumnos[" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", email='" + email + '\'' +
                 ", telefono='" + telefono + '\'' +
-                '}';
+                ']';
     }
 }

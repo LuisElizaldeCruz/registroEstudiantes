@@ -14,6 +14,6 @@ public interface AcademiaService {
 
     Academia update(Long id, Academia academia);
 
-    void delete(Long id);
+    void deleteById(Long id);
 
 }

@@ -41,7 +41,7 @@ public class AcademiaServiceImp implements AcademiaService {
     }
 
     @Override
-    public void delete(Long id) {
+    public void deleteById(Long id) {
         academiaRepository.deleteById(id);
     }
 }
