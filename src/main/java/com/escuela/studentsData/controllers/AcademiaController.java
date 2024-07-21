@@ -22,10 +22,20 @@ public class AcademiaController {
         return (Academia) academiaService.findById(id).orElse(null);
     }
     */
+    /*
     @GetMapping
     public List<Academia> listarAcademias() {
         return academiaService.findAll();
     }
+    */
+
+    @GetMapping
+    public ResponseEntity<List<Academia>> getAll() {
+
+        List<Academia> academias = academiaService.findAll();
+        return ResponseEntity.ok(academias);
+    }
+
 
     @GetMapping("/obtener/{id}")
     public Academia econtrarAcademia(@PathVariable Long id) {
@@ -36,6 +46,19 @@ public class AcademiaController {
        }
        //retorna el usuario con el id pasado en la url
         return academia.get();
+    }
+
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<?> updateAcademy(@PathVariable Long id, @RequestBody Academia academia){
+        Optional <Academia> academy = academiaService.update(id, academia);
+
+        if(academy.isPresent()) {
+            return ResponseEntity.ok(academy);
+        }
+        else{
+            throw new RuntimeException("Academia no encontrada con id: " + id);
+        }
+
     }
 
     @PostMapping("/crear")
