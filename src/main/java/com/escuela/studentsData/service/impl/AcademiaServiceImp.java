@@ -35,9 +35,9 @@ public class AcademiaServiceImp implements AcademiaService {
     public Academia update(Long id, Academia academia) {
         Academia academiaBd = academiaRepository.findById(id).orElse(null);
         if(academiaBd != null){
-            academiaBd.setNombre(academiaBd.getNombre());
+            academiaBd.setNombre(academia.getNombre());
         }
-        return null;
+        return academiaBd;
     }
 
     @Override

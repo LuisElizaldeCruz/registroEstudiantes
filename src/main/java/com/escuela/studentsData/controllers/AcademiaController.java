@@ -50,9 +50,9 @@ public class AcademiaController {
 
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<?> updateAcademy(@PathVariable Long id, @RequestBody Academia academia){
-        Optional <Academia> academy = academiaService.update(id, academia);
+        Academia academy = academiaService.update(id, academia); //
 
-        if(academy.isPresent()) {
+        if(academy != null) {
             return ResponseEntity.ok(academy);
         }
         else{
