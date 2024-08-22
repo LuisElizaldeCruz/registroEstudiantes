@@ -31,7 +31,7 @@ public class AcademiaServiceImp implements AcademiaService {
         return academiaRepository.save(academia);
     }
 
-/*
+
     @Override
     public Optional<Academia> update(Long id, Academia academia) {
        // Academia academiaBd = academiaRepository.findById(id).orElse(null);
@@ -43,19 +43,16 @@ public class AcademiaServiceImp implements AcademiaService {
             academiaToUpdate.setNombre(academia.getNombre());
             academiaToUpdate.setTelefono(academia.getTelefono());
             academiaToUpdate.setWeb(academia.getWeb());
-            academiaRepository.save(academiaToUpdate);
-
-
-            //guardado de la entidad actualizada
-            academiaRepository.save(academiaBd.get());
+             return Optional.of(academiaRepository.save(academiaToUpdate));
+            //return academiaBd;
         }
         else{
             throw new RuntimeException("Academia no encontrada con id: " + id);
         }
-        return academiaBd;
     }
-    */
 
+
+    /*
     @Override
     public Academia update(Long id, Academia academia) {
         Academia academiaBd = academiaRepository.findById(id)
@@ -68,7 +65,7 @@ public class AcademiaServiceImp implements AcademiaService {
 
         // Guardado de la entidad actualizada
         return academiaRepository.save(academiaBd);
-    }
+    }*/
 
 
     @Override

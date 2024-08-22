@@ -52,18 +52,10 @@ public class AcademiaController {
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<?> updateAcademy(@PathVariable Long id, @RequestBody Academia academia) {
        // Optional<Academia> academy = academiaService.update(id, academia); //
-/*
-        if(academy.isPresent()) {
-            return ResponseEntity.ok(academy);
-        }
-        else{
-            throw new RuntimeException("Academia no encontrada con id: " + id);
-        }
-        */
 
         try {
-            Academia academy = academiaService.update(id, academia);
-
+           // Academia academy = academiaService.update(id, academia);
+            Optional<Academia> academy = academiaService.update(id, academia);
             return ResponseEntity.ok(academy);
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
