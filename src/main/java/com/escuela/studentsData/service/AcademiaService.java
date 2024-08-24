@@ -13,7 +13,6 @@ public interface AcademiaService {
     Academia save(Academia academia);
 
     Optional<Academia> update(Long id, Academia academia);
-   // Academia update(Long id, Academia academia);
 
     void deleteById(Long id);
 
