@@ -20,12 +20,14 @@ public class Profesor {
     public Profesor() {
     }
 
-    public Profesor(Long id, String nombre, String apellidos, String email, String telefono) {
+
+    public Profesor(Long id, String nombre, String apellidos, String email, String telefono, Academia academia) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
+        this.academia = academia;
     }
 
     public Long getId() {
@@ -68,14 +70,23 @@ public class Profesor {
         this.telefono = telefono;
     }
 
+    public Academia getAcademia() {
+        return academia;
+    }
+
+    public void setAcademia(Academia academia) {
+        this.academia = academia;
+    }
+
     @Override
     public String toString() {
-        return "Profesores{" +
+        return "Profesor{" +
                 "id=" + id +
                 ", nombre='" + nombre + '\'' +
                 ", apellidos='" + apellidos + '\'' +
                 ", email='" + email + '\'' +
                 ", telefono='" + telefono + '\'' +
+                ", academia=" + academia +
                 '}';
     }
 }

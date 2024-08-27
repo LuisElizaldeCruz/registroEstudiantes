@@ -23,7 +23,12 @@ public class AcademiaServiceImp implements AcademiaService {
 
     @Override
     public Optional findById(Long id) {
-        return academiaRepository.findById(id);
+        Optional<Academia> academiaBd = academiaRepository.findById(id);
+        if (academiaBd.isPresent()) {
+            return academiaRepository.findById(id);
+        }else{
+            throw new RuntimeException("Academia no encontrada con id: " + id);
+        }
     }
 
     @Override
@@ -50,23 +55,6 @@ public class AcademiaServiceImp implements AcademiaService {
             throw new RuntimeException("Academia no encontrada con id: " + id);
         }
     }
-
-
-    /*
-    @Override
-    public Academia update(Long id, Academia academia) {
-        Academia academiaBd = academiaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Academia no encontrada con id: " + id));
-
-        // Actualización de campos con nuevos datos de la entidad
-        academiaBd.setNombre(academia.getNombre());
-        academiaBd.setTelefono(academia.getTelefono());
-        academiaBd.setWeb(academia.getWeb());
-
-        // Guardado de la entidad actualizada
-        return academiaRepository.save(academiaBd);
-    }*/
-
 
     @Override
     public void deleteById(Long id) {

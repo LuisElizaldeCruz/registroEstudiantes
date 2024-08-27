@@ -11,61 +11,46 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/academia")
+@RequestMapping("/academia")
 public class AcademiaController {
 
     @Autowired
     private AcademiaService academiaService;
 
-    /*
-    @GetMapping("/obtener/{id}")
-    public Academia getAcademia(@PathVariable Long id) {
-        return (Academia) academiaService.findById(id).orElse(null);
-    }
-    */
-    /*
-    @GetMapping
-    public List<Academia> listarAcademias() {
-        return academiaService.findAll();
-    }
-    */
-
     @GetMapping
     public ResponseEntity<List<Academia>> getAll() {
-
         List<Academia> academias = academiaService.findAll();
         return ResponseEntity.ok(academias);
     }
 
 
     @GetMapping("/obtener/{id}")
-    public Academia econtrarAcademia(@PathVariable Long id) {
-        Optional<Academia> academia = academiaService.findById(id);
+    public ResponseEntity<?> econtrarAcademia(@PathVariable Long id) {
 
-        if (!academia.isPresent()) {
-            throw new RuntimeException("Academia no encontrada con id: " + id);
-        }
-        //retorna el usuario con el id pasado en la url
-        return academia.get();
-    }
-
-    @PutMapping("/actualizar/{id}")
-    public ResponseEntity<?> updateAcademy(@PathVariable Long id, @RequestBody Academia academia) {
-       // Optional<Academia> academy = academiaService.update(id, academia); //
-
-        try {
-           // Academia academy = academiaService.update(id, academia);
-            Optional<Academia> academy = academiaService.update(id, academia);
-            return ResponseEntity.ok(academy);
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-        }
+       try {
+           Optional<Academia> academia = academiaService.findById(id);
+           return ResponseEntity.ok(academia);
+       }catch (RuntimeException e) {
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+       }
 
     }
 
     @PostMapping("/crear")
     public Academia crearAcademia(@RequestBody Academia academia) {
         return academiaService.save(academia);
+    }
+
+
+    @PutMapping("/actualizar/{id}")
+    public ResponseEntity<?> updateAcademy(@PathVariable Long id, @RequestBody Academia academia) {
+
+        try {
+            Optional<Academia> academy = academiaService.update(id, academia);
+            return ResponseEntity.ok(academy);
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+        }
     }
 
 

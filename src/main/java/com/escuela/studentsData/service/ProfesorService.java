@@ -12,7 +12,7 @@ public interface ProfesorService {
 
     Profesor save(Profesor profesor);
 
-    Profesor update(Long id, Profesor estudiante);
+    Optional<Profesor> update(Long id, Profesor profesor);
 
     void delete(Long id);
 }

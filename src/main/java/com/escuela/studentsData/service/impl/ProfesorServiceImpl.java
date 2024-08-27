@@ -32,17 +32,22 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Profesor update(Long id, Profesor profesor) {
-       Profesor profesorBd = profesorRepository.findById(id).orElseThrow(() -> new RuntimeException("Profesr no encontrado con id: " + id));
+    public Optional<Profesor> update(Long id, Profesor profesor) {
+        Optional<Profesor> profesorOptional = profesorRepository.findById(id);
 
-       //obtiene los datos del objeto actualizado
-        profesorBd.setNombre(profesor.getNombre());
-        profesorBd.setApellidos(profesor.getApellidos());
-        profesorBd.setEmail(profesor.getEmail());
-        profesorBd.setTelefono(profesor.getTelefono());
-
+        if (profesorOptional.isPresent()) {
+            Profesor profesorBd = profesorOptional.orElseThrow();
+            //obtiene los datos del objeto actualizado
+            profesorBd.setNombre(profesor.getNombre());
+            profesorBd.setApellidos(profesor.getApellidos());
+            profesorBd.setEmail(profesor.getEmail());
+            profesorBd.setTelefono(profesor.getTelefono());
+            return Optional.of(profesorRepository.save(profesorBd));
+        }else{
+            throw new RuntimeException("Profesor no encontrado con id: " + id);
+        }
         //guardado del objeto actualizado a la base de datos
-        return profesorRepository.save(profesorBd);
+        //return profesorOptional;
     }
 
     @Override
