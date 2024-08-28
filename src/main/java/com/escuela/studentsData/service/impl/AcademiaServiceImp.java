@@ -5,6 +5,7 @@ import com.escuela.studentsData.entities.Academia;
 import com.escuela.studentsData.service.AcademiaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -15,10 +16,10 @@ public class AcademiaServiceImp implements AcademiaService {
     @Autowired
     private AcademiaRepository academiaRepository;
 
-
+    @Transactional(readOnly = true)
     @Override
     public List<Academia> findAll() {
-        return academiaRepository.findAll();
+        return (List<Academia>) academiaRepository.findAll();
     }
 
     @Override

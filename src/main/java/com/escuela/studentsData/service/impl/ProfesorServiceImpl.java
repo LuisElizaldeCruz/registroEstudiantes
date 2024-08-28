@@ -3,6 +3,7 @@ package com.escuela.studentsData.service.impl;
 import com.escuela.studentsData.Repository.ProfesorRepository;
 import com.escuela.studentsData.entities.Profesor;
 import com.escuela.studentsData.service.ProfesorService;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,10 +16,9 @@ public class ProfesorServiceImpl implements ProfesorService {
     @Autowired
     private ProfesorRepository profesorRepository;
 
-
     @Override
     public List<Profesor> findAll() {
-        return profesorRepository.findAll();
+        return (List<Profesor>) profesorRepository.findAll();
     }
 
     @Override
@@ -27,6 +27,7 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
+    @Transactional
     public Profesor save(Profesor profesor) {
         return profesorRepository.save(profesor);
     }

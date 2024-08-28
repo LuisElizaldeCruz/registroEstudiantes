@@ -18,9 +18,10 @@ public class ProfesorController {
     private ProfesorService profesorService;
 
     @GetMapping
-    public ResponseEntity<List<Profesor>> listProfesores() {
-        List<Profesor> profesores = profesorService.findAll();
-        return ResponseEntity.ok(profesores);
+    public List<Profesor> listProfesores() {
+        //List<Profesor> profesores = profesorService.findAll();
+        //return ResponseEntity.ok(profesores);
+        return profesorService.findAll();
     }
 
     @GetMapping("/obtener/{id}")

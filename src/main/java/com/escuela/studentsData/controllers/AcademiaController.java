@@ -17,10 +17,18 @@ public class AcademiaController {
     @Autowired
     private AcademiaService academiaService;
 
-    @GetMapping
-    public ResponseEntity<List<Academia>> getAll() {
-        List<Academia> academias = academiaService.findAll();
-        return ResponseEntity.ok(academias);
+    @PostMapping("/crear")
+    public Academia crearAcademia(@RequestBody Academia academia) {
+        return academiaService.save(academia);
+    }
+
+
+    @GetMapping("/todo")
+    public List<Academia> getAll() {
+         //List<Academia> academias = academiaService.findAll();
+        //return ResponseEntity.ok(academias);
+        return academiaService.findAll();
+
     }
 
 
@@ -36,10 +44,6 @@ public class AcademiaController {
 
     }
 
-    @PostMapping("/crear")
-    public Academia crearAcademia(@RequestBody Academia academia) {
-        return academiaService.save(academia);
-    }
 
 
     @PutMapping("/actualizar/{id}")

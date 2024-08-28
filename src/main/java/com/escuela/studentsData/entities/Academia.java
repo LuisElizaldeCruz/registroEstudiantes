@@ -1,6 +1,9 @@
 package com.escuela.studentsData.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import lombok.ToString;
 
 import java.util.List;
 
@@ -15,11 +18,12 @@ public class Academia {
     private String telefono;
     private String web;
 
-    @OneToMany(mappedBy = "academia")
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "academia", cascade = CascadeType.ALL, orphanRemoval = true)
+    //@JsonBackReference
     private List<Profesor> profesor;
 
-    @OneToMany(mappedBy = "academia")
-    private List<Alumno> listaAlumnos;
+    //@OneToMany(mappedBy = "academia")
+    //private List<Alumno> listaAlumnos;
 
     public Academia() {
     }
@@ -71,21 +75,5 @@ public class Academia {
         this.profesor = profesor;
     }
 
-    public List<Alumno> getAlumno() {
-        return listaAlumnos;
-    }
 
-    public void setAlumnos(List<Alumno> ListaAlumnos) {
-        this.listaAlumnos = ListaAlumnos;
-    }
-
-    @Override
-    public String toString() {
-        return "Academias{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", web='" + web + '\'' +
-                '}';
-    }
 }

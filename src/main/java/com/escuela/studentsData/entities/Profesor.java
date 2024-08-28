@@ -1,5 +1,7 @@
 package com.escuela.studentsData.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 @Entity 
@@ -13,21 +15,19 @@ public class Profesor {
     private String email;
     private String telefono;
 
-    @ManyToOne()
-    @JoinColumn(name = "id_academia")//id de la tabla academia
+    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
+    @JoinColumn(name = "id_academia", nullable = false)//id de la tabla academia
     private Academia academia;
 
     public Profesor() {
     }
 
-
-    public Profesor(Long id, String nombre, String apellidos, String email, String telefono, Academia academia) {
+    public Profesor(Long id, String nombre, String apellidos, String email, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
-        this.academia = academia;
     }
 
     public Long getId() {
@@ -69,7 +69,7 @@ public class Profesor {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
+/*
     public Academia getAcademia() {
         return academia;
     }
@@ -77,16 +77,5 @@ public class Profesor {
     public void setAcademia(Academia academia) {
         this.academia = academia;
     }
-
-    @Override
-    public String toString() {
-        return "Profesor{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", email='" + email + '\'' +
-                ", telefono='" + telefono + '\'' +
-                ", academia=" + academia +
-                '}';
-    }
+*/
 }
