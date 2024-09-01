@@ -15,19 +15,22 @@ public class Profesor {
     private String email;
     private String telefono;
 
-    @ManyToOne(fetch=FetchType.LAZY,cascade = CascadeType.ALL)
-    @JoinColumn(name = "id_academia", nullable = false)//id de la tabla academia
+    @ManyToOne(fetch=FetchType.LAZY/*,cascade = CascadeType.ALL*/)
+    @JoinColumn(name = "id_academia"/*, nullable = false*/)//id de la tabla academia
+    @JsonBackReference
     private Academia academia;
 
     public Profesor() {
     }
 
-    public Profesor(Long id, String nombre, String apellidos, String email, String telefono) {
+
+    public Profesor(Long id, String nombre, String apellidos, String email, String telefono, Academia academia) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
+        this.academia = academia;
     }
 
     public Long getId() {
@@ -69,7 +72,7 @@ public class Profesor {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-/*
+
     public Academia getAcademia() {
         return academia;
     }
@@ -77,5 +80,5 @@ public class Profesor {
     public void setAcademia(Academia academia) {
         this.academia = academia;
     }
-*/
+
 }

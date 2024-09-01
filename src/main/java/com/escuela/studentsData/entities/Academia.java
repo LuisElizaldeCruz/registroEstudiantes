@@ -18,8 +18,8 @@ public class Academia {
     private String telefono;
     private String web;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy = "academia", cascade = CascadeType.ALL, orphanRemoval = true)
-    //@JsonBackReference
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "academia", /*cascade = CascadeType.ALL,*/ orphanRemoval = true)
+    @JsonManagedReference
     private List<Profesor> profesor;
 
     //@OneToMany(mappedBy = "academia")
@@ -28,11 +28,13 @@ public class Academia {
     public Academia() {
     }
 
-    public Academia(Long id, String nombre, String telefono, String web) {
+
+    public Academia(Long id, String nombre, String telefono, String web, List<Profesor> profesor) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
         this.web = web;
+        this.profesor = profesor;
     }
 
     public Long getId() {
@@ -74,6 +76,5 @@ public class Academia {
     public void setProfesor(List<Profesor> profesor) {
         this.profesor = profesor;
     }
-
 
 }
