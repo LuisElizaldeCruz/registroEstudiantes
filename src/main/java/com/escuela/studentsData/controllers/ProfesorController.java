@@ -50,5 +50,17 @@ public class ProfesorController {
         }
     }
 
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<?> eliminarProfesor(@PathVariable Long id){
+        Optional<Profesor> profesor = profesorService.findById(id);
+
+        if(!profesor.isPresent()){
+            throw new RuntimeException("Profesor no encontrado con id: " + id);
+        }
+        profesorService.delete(id);
+
+        return ResponseEntity.ok().build();
+    }
+
 
 }
