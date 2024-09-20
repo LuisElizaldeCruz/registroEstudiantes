@@ -2,6 +2,7 @@ package com.escuela.studentsData.controllers;
 
 import com.escuela.studentsData.entities.Profesor;
 import com.escuela.studentsData.service.ProfesorService;
+import com.escuela.studentsData.service.impl.ProfesorServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,26 +19,30 @@ public class ProfesorController {
     private ProfesorService profesorService;
 
     @GetMapping
-    public List<Profesor> listProfesores() {
-        //List<Profesor> profesores = profesorService.findAll();
-        //return ResponseEntity.ok(profesores);
-        return profesorService.findAll();
+    public ResponseEntity <List<Profesor>> listProfesores() {
+        List<Profesor> profesores = profesorService.findAll();
+      return new ResponseEntity<>(profesores, HttpStatus.OK);
     }
 
     @GetMapping("/obtener/{id}")
-    public Profesor econtrarProfesor(@PathVariable Long id) {
-        Optional<Profesor> profesor = profesorService.findById(id);
-
-        if (!profesor.isPresent()) {
-            throw new RuntimeException("Profesor no encontrado con id: " + id);
+    public ResponseEntity<?> econtrarProfesor(@PathVariable Long id) {
+        try {
+            Optional<Profesor> profesor = profesorService.findById(id);
+            return new ResponseEntity<>(profesor.get(), HttpStatus.OK);
+        }catch (RuntimeException e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
-        return profesor.get();
-
     }
 
     @PostMapping("/crear")
-    public Profesor crearProfesor(@RequestBody Profesor profesor){
-        return profesorService.save(profesor);
+    public ResponseEntity<Profesor> crearProfesor(@RequestBody Profesor profesor){
+        //return profesorService.save(profesor);
+        try {
+            Profesor savedProfesor = profesorService.save(profesor);
+            return new ResponseEntity<>(savedProfesor, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
 
     @PutMapping("/actualizar/{id}")

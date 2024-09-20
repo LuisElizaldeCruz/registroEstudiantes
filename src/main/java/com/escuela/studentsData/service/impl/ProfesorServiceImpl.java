@@ -22,8 +22,13 @@ public class ProfesorServiceImpl implements ProfesorService {
     }
 
     @Override
-    public Optional findById(Long id) {
-        return profesorRepository.findById(id);
+    public Optional<Profesor> findById(Long id) {
+       Optional<Profesor> profesorBD = profesorRepository.findById(id);
+       if(profesorBD.isPresent()) {
+           return profesorRepository.findById(id);
+       }else{
+           throw new RuntimeException("Profesor no encontrado con id: " + id);
+       }
     }
 
     @Override

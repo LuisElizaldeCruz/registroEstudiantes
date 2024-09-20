@@ -18,33 +18,30 @@ public class AcademiaController {
     private AcademiaService academiaService;
 
     @PostMapping("/crear")
-    public Academia crearAcademia(@RequestBody Academia academia) {
-        return academiaService.save(academia);
+    public ResponseEntity<Academia> crearAcademia(@RequestBody Academia academia) {
+        try {
+            Academia savedAcademia = academiaService.save(academia);
+            return new ResponseEntity<>(savedAcademia,HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
     }
-
 
     @GetMapping("/todo")
     public List<Academia> getAll() {
-         //List<Academia> academias = academiaService.findAll();
-        //return ResponseEntity.ok(academias);
-        return academiaService.findAll();
-
+         List<Academia> academias = academiaService.findAll();
+        return ResponseEntity.ok(academias).getBody();
     }
-
 
     @GetMapping("/obtener/{id}")
     public ResponseEntity<?> econtrarAcademia(@PathVariable Long id) {
-
-       try {
-           Optional<Academia> academia = academiaService.findById(id);
+        Optional<Academia> academia = academiaService.findById(id);
+       if (academia.isPresent())
            return ResponseEntity.ok(academia);
-       }catch (RuntimeException e) {
-           return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
-       }
-
+        else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("academia no encontrada con id: "+id);
+        }
     }
-
-
 
     @PutMapping("/actualizar/{id}")
     public ResponseEntity<?> updateAcademy(@PathVariable Long id, @RequestBody Academia academia) {
@@ -57,17 +54,16 @@ public class AcademiaController {
         }
     }
 
-
     @DeleteMapping("/eliminar/{id}")
     public ResponseEntity<?> eliminarAcademia(@PathVariable Long id) {
         Optional<Academia> academia = academiaService.findById(id);
 
-        if (!academia.isPresent()) {
-            throw new RuntimeException("Academia no encontrada con id: " + id);
+        if (academia.isPresent()) {
+            academiaService.deleteById(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        }else{
+           return ResponseEntity.status(HttpStatus.NOT_FOUND).body("academia no encontrada con id: "+id);
         }
-        academiaService.deleteById(id);
-
-        return ResponseEntity.ok().build();
     }
 
 }
