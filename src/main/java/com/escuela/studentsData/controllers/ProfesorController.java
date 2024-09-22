@@ -19,9 +19,9 @@ public class ProfesorController {
     private ProfesorService profesorService;
 
     @GetMapping
-    public ResponseEntity <List<Profesor>> listProfesores() {
+    public ResponseEntity<List<Profesor>> listProfesores() {
         List<Profesor> profesores = profesorService.findAll();
-      return new ResponseEntity<>(profesores, HttpStatus.OK);
+        return new ResponseEntity<>(profesores, HttpStatus.OK);
     }
 
     @GetMapping("/obtener/{id}")
@@ -29,18 +29,18 @@ public class ProfesorController {
         try {
             Optional<Profesor> profesor = profesorService.findById(id);
             return new ResponseEntity<>(profesor.get(), HttpStatus.OK);
-        }catch (RuntimeException e){
+        } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
     @PostMapping("/crear")
-    public ResponseEntity<Profesor> crearProfesor(@RequestBody Profesor profesor){
+    public ResponseEntity<Profesor> crearProfesor(@RequestBody Profesor profesor) {
         //return profesorService.save(profesor);
         try {
             Profesor savedProfesor = profesorService.save(profesor);
             return new ResponseEntity<>(savedProfesor, HttpStatus.OK);
-        }catch (Exception e){
+        } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
@@ -50,21 +50,21 @@ public class ProfesorController {
         try {
             Optional<Profesor> profesorBd = profesorService.update(id, profesor);
             return ResponseEntity.ok(profesorBd);
-        }catch(RuntimeException e){
+        } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
 
     @DeleteMapping("/eliminar/{id}")
-    public ResponseEntity<?> eliminarProfesor(@PathVariable Long id){
+    public ResponseEntity<?> eliminarProfesor(@PathVariable Long id) {
         Optional<Profesor> profesor = profesorService.findById(id);
 
-        if(!profesor.isPresent()){
-            throw new RuntimeException("Profesor no encontrado con id: " + id);
+        if (profesor.isPresent()) {
+            profesorService.delete(id);
+            return new ResponseEntity<>(HttpStatus.OK);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("profesor no encontrada con id: " + id);
         }
-        profesorService.delete(id);
-
-        return ResponseEntity.ok().build();
     }
 
 

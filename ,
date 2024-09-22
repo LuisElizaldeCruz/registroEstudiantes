@@ -1,0 +1,101 @@
+[33mcommit 023f563492304ae5b7c40bcce0850fc130ea100b[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mv3-dto-impl[m[33m, [m[1;31morigin/v3-dto-impl[m[33m)[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Thu Sep 19 23:29:16 2024 -0600
+
+    se agrego varias excepciones a los metodos del controlador AcademiaController.java
+
+[33mcommit 4b95c30acb3cdd7f59a62d8916715f7a91bfdd32[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Tue Sep 17 23:42:58 2024 -0600
+
+    se agrego el metodo delete en el controlador
+
+[33mcommit 7f00d8abc11d239b30fc91fffe8b29d816755b11[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Tue Sep 10 22:53:04 2024 -0600
+
+    creacion del patron dto
+
+[33mcommit ddc1deee6782ed28017d738a9b80e2a07af22900[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Sun Sep 1 01:04:10 2024 -0600
+
+    se corrigio el error al no poder guardar informacion en la tabla profesor
+
+[33mcommit 6d0a8ba3c89499b49b1dae4571480472403d0f5e[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Tue Aug 27 23:18:33 2024 -0600
+
+    se corrigio el error de serializacon al probar la api
+
+[33mcommit 6d94b9d65ad0dde473bc1d6994390e170e4cebb2[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Mon Aug 26 21:41:24 2024 -0600
+
+    creación de los endpoints listar e insertar datos de un profesor
+
+[33mcommit 98b638b87e9d633bf788211f1a0ca2edae3c76d4[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Sat Aug 24 00:05:10 2024 -0600
+
+    creación del servicio ProfesoServiceImpl
+
+[33mcommit b1cff33847ea20d1dfc04a4d47d01c632a884498[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Thu Aug 22 01:01:09 2024 -0600
+
+    se agregaron correciones y mensajes de error al metodo update
+
+[33mcommit 23cd7691fe98e9eb45dafc8e83838470a36cc312[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Thu Aug 22 00:09:17 2024 -0600
+
+    se agrego el metodo update
+
+[33mcommit 6aa8ba377831343e82a64a06cd99cc83547d7a15[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Sat Aug 10 00:56:44 2024 -0600
+
+    se corrigio el metodo update que no permitia obtener el nuevo atributo del objeto actualizado
+
+[33mcommit b6a5ff74caed11d5683f54d8742f07e42ca8b299[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Sun Jul 21 00:13:23 2024 -0600
+
+    se agrego el metodo update en el restcontroller para actuializar algun registro el la base de datos
+
+[33mcommit 519c7b0e519ec80ce6dbc3dd722aff8480248734[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Sat Jul 20 23:05:56 2024 -0600
+
+    se agrego los endpoints para listar todas las academias y el endpoint para eliminar una academia
+
+[33mcommit 90142ca7cef4a26978a48ec46a20535ccc76f137[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Fri Jul 19 00:09:33 2024 -0600
+
+    se agrego un mensaje de error en caso de no encontrar el recurso solicitado
+
+[33mcommit f2a7f1cdb19c2690017425c6fb067659a910c2dd[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Mon Jul 1 00:20:36 2024 -0600
+
+    creación del metodo po para insertar datos a la BD
+
+[33mcommit ffdbe6b085ac1e55317acb2517a7f2ac2bd3fbc9[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Sun Jun 30 20:31:13 2024 -0600
+
+    se creo las interfaces de las entidades
+
+[33mcommit 983dbcc19f554686b21e4689885de5d1174ad6e4[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Mon Jun 24 23:06:39 2024 -0600
+
+    creacion de las entidades para la base de datos
+
+[33mcommit 2937a272fa84fb4b7773df521912d5ad09dbc23b[m
+Author: LuisElizaldeCruz <luis.elizalde.dev@gmail.com>
+Date:   Sun Jun 23 22:35:22 2024 -0600
+
+    creacion de la entidad academia
