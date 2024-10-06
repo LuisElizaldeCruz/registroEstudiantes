@@ -1,58 +1,46 @@
 package com.escuela.studentsData.dto;
 
-public class ProfesorDTO {
-    private Long id;
-    private String nombre;
-    private String apellidos;
-    private String email;
-    private String telefono;
-    private AcademiaDTO academia;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-    public Long getId() {
-        return id;
-    }
+import java.io.Serializable;
 
-    public void setId(Long id) {
-        this.id = id;
+
+public class ProfesorDTO implements Serializable {
+    private final String nombre;
+    private final String apellidos;
+    private final String email;
+    private final String telefono;
+    private final  AcademiaDTO academia;
+
+
+    public ProfesorDTO(String nombre, String apellidos, String email, String telefono, AcademiaDTO academia) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.email = email;
+        this.telefono = telefono;
+        this.academia = academia;
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public String getApellidos() {
         return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
     }
 
     public String getEmail() {
         return email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
     public AcademiaDTO getAcademia() {
         return academia;
-    }
-
-    public void setAcademia(AcademiaDTO academia) {
-        this.academia = academia;
     }
 }
