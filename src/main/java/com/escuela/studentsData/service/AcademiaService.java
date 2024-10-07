@@ -1,12 +1,13 @@
 package com.escuela.studentsData.service;
 
+import com.escuela.studentsData.dto.AcademiaDto;
 import com.escuela.studentsData.entities.Academia;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface AcademiaService {
-    List<Academia> findAll();
+    List<AcademiaDto> findAll();
 
     Optional findById(Long id);
 

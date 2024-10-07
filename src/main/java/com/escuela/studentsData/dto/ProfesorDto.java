@@ -1,22 +1,17 @@
 package com.escuela.studentsData.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.io.Serializable;
 
 
-public class ProfesorDTO implements Serializable {
+public class ProfesorDto implements Serializable {
     private final String nombre;
     private final String apellidos;
     private final String email;
     private final String telefono;
-    private final  AcademiaDTO academia;
+    private final AcademiaDto academia;
 
 
-    public ProfesorDTO(String nombre, String apellidos, String email, String telefono, AcademiaDTO academia) {
+    public ProfesorDto(String nombre, String apellidos, String email, String telefono, AcademiaDto academia) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
@@ -40,7 +35,7 @@ public class ProfesorDTO implements Serializable {
         return telefono;
     }
 
-    public AcademiaDTO getAcademia() {
+    public AcademiaDto getAcademia() {
         return academia;
     }
 }

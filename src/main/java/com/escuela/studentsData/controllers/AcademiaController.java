@@ -17,6 +17,13 @@ public class AcademiaController {
     @Autowired
     private AcademiaService academiaService;
 
+    @GetMapping("/todo")
+    public List<Academia> getAll() {
+       // List<Academia> academias = academiaService.findAll();
+        //return ResponseEntity.ok(academias).getBody();
+        return null;
+    }
+
     @PostMapping("/crear")
     public ResponseEntity<Academia> crearAcademia(@RequestBody Academia academia) {
         try {
@@ -25,12 +32,6 @@ public class AcademiaController {
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-    }
-
-    @GetMapping("/todo")
-    public List<Academia> getAll() {
-         List<Academia> academias = academiaService.findAll();
-        return ResponseEntity.ok(academias).getBody();
     }
 
     @GetMapping("/obtener/{id}")

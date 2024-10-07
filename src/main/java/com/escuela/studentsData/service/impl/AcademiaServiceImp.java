@@ -1,6 +1,8 @@
 package com.escuela.studentsData.service.impl;
 
 import com.escuela.studentsData.Repository.AcademiaRepository;
+import com.escuela.studentsData.dto.AcademiaDto;
+import com.escuela.studentsData.dto.mapper.AcademiaMapper;
 import com.escuela.studentsData.entities.Academia;
 import com.escuela.studentsData.service.AcademiaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class AcademiaServiceImp implements AcademiaService {
@@ -18,8 +21,11 @@ public class AcademiaServiceImp implements AcademiaService {
 
     @Transactional(readOnly = true)
     @Override
-    public List<Academia> findAll() {
-        return (List<Academia>) academiaRepository.findAll();
+    public List<AcademiaDto> findAll() {
+       // return (List<Academia>) academiaRepository.findAll();
+        List<Academia> academias = (List<Academia>) academiaRepository.findAll();
+        List<AcademiaDto> academiaDtos = academias.stream().map(academia -> AcademiaMapper.mapper.academiaToAcademiaDto(academia)).collect(Collectors.toList());
+        return academiaDtos;
     }
 
     @Override
