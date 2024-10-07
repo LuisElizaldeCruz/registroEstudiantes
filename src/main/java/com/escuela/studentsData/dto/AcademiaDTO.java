@@ -1,35 +1,22 @@
 package com.escuela.studentsData.dto;
 
 import com.escuela.studentsData.entities.Profesor;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
+@AllArgsConstructor
 public class AcademiaDTO {
+    private final Long id;
     private final String nombre;
     private final String telefono;
     private final String web;
     private List<ProfesorDTO> profesores= new ArrayList<>();
 
-    public AcademiaDTO(String nombre, String telefono, String web) {
-        this.nombre = nombre;
-        this.telefono = telefono;
-        this.web = web;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public String getWeb() {
-        return web;
-    }
-
-    public List<ProfesorDTO> getProfesores() {
-        return profesores;
-    }
 }
