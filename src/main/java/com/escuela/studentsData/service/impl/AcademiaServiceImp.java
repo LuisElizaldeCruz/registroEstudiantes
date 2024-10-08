@@ -22,37 +22,40 @@ public class AcademiaServiceImp implements AcademiaService {
     @Transactional(readOnly = true)
     @Override
     public List<AcademiaDto> findAll() {
-       // return (List<Academia>) academiaRepository.findAll();
         List<Academia> academias = (List<Academia>) academiaRepository.findAll();
-        List<AcademiaDto> academiaDtos = academias.stream().map(academia -> AcademiaMapper.mapper.academiaToAcademiaDto(academia)).collect(Collectors.toList());
-        return academiaDtos;
+        return academias.stream().map(academia -> AcademiaMapper.mapper.academiaToAcademiaDto(academia)).collect(Collectors.toList());
     }
 
     @Override
-    public Optional findById(Long id) {
-        Optional<Academia> academiaBd = academiaRepository.findById(id);
-            return academiaRepository.findById(id);
+    public Optional<AcademiaDto> findById(Long id) {
+        Optional<Academia> academia = academiaRepository.findById(id);
+        // return academiaRepository.findById(id);
+        return academia.map(acadAux -> AcademiaMapper.mapper.academiaToAcademiaDto(acadAux));
     }
 
     @Override
-    public Academia save(Academia academia) {
-        return academiaRepository.save(academia);
+    public AcademiaDto save(AcademiaDto academiaDto) {
+        Academia academia = AcademiaMapper.mapper.academiaDtoToAcademia(academiaDto);
+        Academia academiaSaved = academiaRepository.save(academia);//se almacena la entidad guardada para devolverla como respuesta
+        return AcademiaMapper.mapper.academiaToAcademiaDto(academiaSaved);
     }
 
 
     @Override
-    public Optional<Academia> update(Long id, Academia academia) {
+    public Optional<AcademiaDto> update(Long id, AcademiaDto academia) {
        // Academia academiaBd = academiaRepository.findById(id).orElse(null);
         Optional<Academia> academiaBd = academiaRepository.findById(id);
         if(academiaBd.isPresent()){
-          Academia academiaToUpdate = academiaBd.get();
+            Academia academiaToUpdate = academiaBd.get();
+            Academia academiSave = AcademiaMapper.mapper.academiaDtoToAcademia(academia);
+           // Academia academiaToSave = academiaRepository.save(academiaToUpdate);
 
           //actualizacion de campos con nuevos datos de la entidad
-            academiaToUpdate.setNombre(academia.getNombre());
-            academiaToUpdate.setTelefono(academia.getTelefono());
-            academiaToUpdate.setWeb(academia.getWeb());
-             return Optional.of(academiaRepository.save(academiaToUpdate));
-            //return academiaBd;
+            academiaToUpdate.setNombre(academiSave.getNombre());
+            academiaToUpdate.setTelefono(academiSave.getTelefono());
+            academiaToUpdate.setWeb(academiSave.getWeb());
+
+            return Optional.of(AcademiaMapper.mapper.academiaToAcademiaDto(academiaRepository.save(academiaToUpdate)));
         }
         else{
             throw new RuntimeException("Academia no encontrada con id: " + id);

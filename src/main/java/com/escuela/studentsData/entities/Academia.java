@@ -5,10 +5,11 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.ToString;
 
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
-public class Academia {
+public class Academia implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -11,9 +11,9 @@ public interface AcademiaService {
 
     Optional findById(Long id);
 
-    Academia save(Academia academia);
+    AcademiaDto save(AcademiaDto academiaDto);
 
-    Optional<Academia> update(Long id, Academia academia);
+    Optional<AcademiaDto> update(Long id, AcademiaDto academia);
 
     void deleteById(Long id);
 
