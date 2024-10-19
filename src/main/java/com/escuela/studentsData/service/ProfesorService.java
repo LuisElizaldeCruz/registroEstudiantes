@@ -1,18 +1,19 @@
 package com.escuela.studentsData.service;
 
+import com.escuela.studentsData.dto.ProfesorDto;
 import com.escuela.studentsData.entities.Profesor;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ProfesorService {
-    List<Profesor> findAll();
+    List<ProfesorDto> findAll();
 
     Optional findById(Long id);
 
-    Profesor save(Profesor profesor);
+    ProfesorDto save(ProfesorDto profesorDto);
 
-    Optional<Profesor> update(Long id, Profesor profesor);
+    Optional<ProfesorDto> update(Long id, ProfesorDto profesorDto);
 
     void delete(Long id);
 }

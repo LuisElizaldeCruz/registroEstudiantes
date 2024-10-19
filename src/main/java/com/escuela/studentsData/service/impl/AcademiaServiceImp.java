@@ -42,13 +42,12 @@ public class AcademiaServiceImp implements AcademiaService {
 
 
     @Override
-    public Optional<AcademiaDto> update(Long id, AcademiaDto academia) {
-       // Academia academiaBd = academiaRepository.findById(id).orElse(null);
+    public Optional<AcademiaDto> update(Long id, AcademiaDto academiaDto) {
         Optional<Academia> academiaBd = academiaRepository.findById(id);
+
         if(academiaBd.isPresent()){
             Academia academiaToUpdate = academiaBd.get();
-            Academia academiSave = AcademiaMapper.mapper.academiaDtoToAcademia(academia);
-           // Academia academiaToSave = academiaRepository.save(academiaToUpdate);
+            Academia academiSave = AcademiaMapper.mapper.academiaDtoToAcademia(academiaDto);
 
           //actualizacion de campos con nuevos datos de la entidad
             academiaToUpdate.setNombre(academiSave.getNombre());

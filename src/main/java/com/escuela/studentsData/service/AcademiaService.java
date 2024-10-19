@@ -13,7 +13,7 @@ public interface AcademiaService {
 
     AcademiaDto save(AcademiaDto academiaDto);
 
-    Optional<AcademiaDto> update(Long id, AcademiaDto academia);
+    Optional<AcademiaDto> update(Long id, AcademiaDto academiaDto);
 
     void deleteById(Long id);
 
