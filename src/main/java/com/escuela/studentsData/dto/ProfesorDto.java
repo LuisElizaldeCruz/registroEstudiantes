@@ -1,5 +1,7 @@
 package com.escuela.studentsData.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.io.Serializable;
 
 
@@ -8,15 +10,15 @@ public class ProfesorDto implements Serializable {
     private final String apellidos;
     private final String email;
     private final String telefono;
-    private final AcademiaDto academia;
+   /// private final AcademiaDto academia;
 
 
-    public ProfesorDto(String nombre, String apellidos, String email, String telefono, AcademiaDto academia) {
+    public ProfesorDto(String nombre, String apellidos, String email, String telefono/*, AcademiaDto academia*/) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.email = email;
         this.telefono = telefono;
-        this.academia = academia;
+       // this.academia = academia;
     }
 
     public String getNombre() {
@@ -34,8 +36,9 @@ public class ProfesorDto implements Serializable {
     public String getTelefono() {
         return telefono;
     }
-
+/*
     public AcademiaDto getAcademia() {
         return academia;
     }
+    */
 }

@@ -21,8 +21,8 @@ public class ProfesorController {
 
     @GetMapping
     public ResponseEntity<List<ProfesorDto>> listProfesores() {
-        List<ProfesorDto> profesores = profesorService.findAll();
-        return new ResponseEntity<>(profesores, HttpStatus.OK);
+        List<ProfesorDto> profesoresDto = profesorService.findAll();
+        return new ResponseEntity<>(profesoresDto, HttpStatus.OK);
     }
 
     @GetMapping("/obtener/{id}")

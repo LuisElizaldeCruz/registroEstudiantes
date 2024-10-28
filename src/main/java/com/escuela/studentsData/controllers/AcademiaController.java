@@ -18,7 +18,7 @@ public class AcademiaController {
     @Autowired
     private AcademiaService academiaService;
 
-    @GetMapping("/todo")
+    @GetMapping
     public ResponseEntity getAll() {
         List<AcademiaDto> academiaDto = academiaService.findAll();
         return new ResponseEntity(academiaDto, HttpStatus.OK);
@@ -33,7 +33,6 @@ public class AcademiaController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("academia no encontrada con id: "+id);
         }
     }
-
 
     @PostMapping("/crear")
     public ResponseEntity<AcademiaDto> crearAcademia(@RequestBody AcademiaDto academiaDto) {

@@ -1,5 +1,6 @@
 package com.escuela.studentsData.dto;
 
+import com.escuela.studentsData.entities.Profesor;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,12 +18,12 @@ public class AcademiaDto {
     private String nombre;
     private String telefono;
     private String web;
-    private List<ProfesorDto> profesores= new ArrayList<>();
+    private List<Profesor> profesores;
 
     public AcademiaDto() {
     }
 
-    public AcademiaDto(Long id, String nombre, String telefono, String web, List<ProfesorDto> profesores) {
+    public AcademiaDto(Long id, String nombre, String telefono, String web, List<Profesor> profesores) {
         this.id = id;
         this.nombre = nombre;
         this.telefono = telefono;
@@ -62,11 +63,11 @@ public class AcademiaDto {
         this.web = web;
     }
 
-    public List<ProfesorDto> getProfesores() {
+    public List<Profesor> getProfesores() {
         return profesores;
     }
 
-    public void setProfesores(List<ProfesorDto> profesores) {
+    public void setProfesores(List<Profesor> profesores) {
         this.profesores = profesores;
     }
 }

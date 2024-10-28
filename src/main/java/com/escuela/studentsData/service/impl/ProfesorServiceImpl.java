@@ -59,7 +59,6 @@ public class ProfesorServiceImpl implements ProfesorService {
         }else{
             throw new RuntimeException("Profesor no encontrado con id: " + id);
         }
-
     }
 
     @Override

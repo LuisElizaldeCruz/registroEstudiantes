@@ -17,7 +17,7 @@ public class Profesor {
 
     @ManyToOne(fetch=FetchType.LAZY/*,cascade = CascadeType.ALL*/)
     @JoinColumn(name = "id_academia"/*, nullable = false*/)//id de la tabla academia
-    @JsonBackReference
+   @JsonBackReference
     private Academia academia;
 
     public Profesor() {

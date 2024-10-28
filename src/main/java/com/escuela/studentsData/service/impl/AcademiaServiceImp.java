@@ -40,7 +40,6 @@ public class AcademiaServiceImp implements AcademiaService {
         return AcademiaMapper.mapper.academiaToAcademiaDto(academiaSaved);
     }
 
-
     @Override
     public Optional<AcademiaDto> update(Long id, AcademiaDto academiaDto) {
         Optional<Academia> academiaBd = academiaRepository.findById(id);

@@ -19,8 +19,8 @@ public class Academia implements Serializable {
     private String telefono;
     private String web;
 
-    @OneToMany(fetch=FetchType.LAZY, mappedBy = "academia", /*cascade = CascadeType.ALL,*/ orphanRemoval = true)
-    @JsonManagedReference
+    @OneToMany(fetch=FetchType.LAZY, mappedBy = "academia", cascade = CascadeType.ALL/*, orphanRemoval = true*/)
+   @JsonManagedReference
     private List<Profesor> profesor;
 
     //@OneToMany(mappedBy = "academia")
@@ -28,7 +28,6 @@ public class Academia implements Serializable {
 
     public Academia() {
     }
-
 
     public Academia(Long id, String nombre, String telefono, String web, List<Profesor> profesor) {
         this.id = id;
